@@ -18,19 +18,19 @@
           </div>
         </div>
       </div>
-      <form class="sign-up" action="#">
+      <form id="signUp" class="sign-up" action="#">
         <h2>Créer votre compte</h2>
         <div>Utiliser votre adresse email pour vous enregistrer</div>
-        <input  type="text" placeholder="Nom" />
-        <input  type="email" placeholder="Email" />
-        <input  type="password" placeholder="Mot de passe" />
-        <button><RouterLink to="/Profil">S'enregistrer</RouterLink></button>
+        <input id="name"  type="text" placeholder="Nom" />
+        <input id="email" type="email" placeholder="Email" />
+        <input id="password" type="password" placeholder="Mot de passe" />
+        <button ><RouterLink to="/Profil">S'enregistrer</RouterLink></button>
       </form>
       <form class="sign-in" action="#">
         <h2>Connexion</h2>
         <div>Utiliser votre compte</div>
-        <input type="email" placeholder="Email" />
-        <input  type="password" placeholder="Mot de passe" />
+        <input id="email" type="email" placeholder="Email" />
+        <input id="password" type="password" placeholder="Mot de passe" />
         <a href="#">Vous avez oublié votre mot de passe ?</a>
         <button><RouterLink to="/Compte">Se connecter</RouterLink></button>
       </form>
@@ -39,14 +39,28 @@
   </div>
 </template>
 
-<script>
-export default {
-  data: () => {
-    return {
-      signUp: false
-    }
-  }
+<script setup >
+import {ref} from "vue";
+import firebase from "firebase/compat/app";
+import { useRouter } from "vue-router";
+const email = ref ("")
+const password =ref("")
+const name = ref ("")
+const router = useRouter()
+const submit = () => {
+	firebase
+	.auth()
+	.createUserWithEmailAndPassword(email.value, password.value, name.value)
+	.then((data)=>{
+		console.log('Vous êtes bien enregistrer');
+		router.push("/Profil")
+	})
+	.catch(error => {
+		console.log(error.code)
+		alert(error.message);
+	})
 }
+
 </script>
 
 <style scoped>
