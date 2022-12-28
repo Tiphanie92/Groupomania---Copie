@@ -14,6 +14,7 @@
             <h2>Bienvenue!</h2>
             <p>Si vous n'êtes pas encore inscrit, Foncer ! </p>
             <button class="invert " id="signUp" @click="signUp = !signUp">S'enregistrer</button>
+			
           </div>
         </div>
       </div>
@@ -23,7 +24,7 @@
         <input  type="text" placeholder="Nom" />
         <input  type="email" placeholder="Email" />
         <input  type="password" placeholder="Mot de passe" />
-        <button>S'enregistrer</button>
+        <button><RouterLink to="/Profil">S'enregistrer</RouterLink></button>
       </form>
       <form class="sign-in" action="#">
         <h2>Connexion</h2>
@@ -31,7 +32,7 @@
         <input type="email" placeholder="Email" />
         <input  type="password" placeholder="Mot de passe" />
         <a href="#">Vous avez oublié votre mot de passe ?</a>
-        <button>Se connecter</button>
+        <button><RouterLink to="/Compte">Se connecter</RouterLink></button>
       </form>
     </div>
   </article>
@@ -59,9 +60,7 @@ export default {
   justify-content: center;
   align-items: center;
 }
-img{
-	
-}
+
 .container {
 	 position: relative;
 	 width: 60%;
@@ -183,7 +182,6 @@ background: linear-gradient(to bottom right, #FF8787
 }
 
 a {
-  color: #4E5166;
   text-decoration: none;
   margin: 15px 0;
   font-family: 'Lato', sans-serif;

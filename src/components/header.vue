@@ -4,15 +4,16 @@
         <img src="../assets/iconWhite.png" alt="logo" class="logo"/>
         <nav className="nav">
             <font-awesome-icon icon="fa-regular fa-envelope" beatFade class="ico" />
-        <a className="post k-font" >
+        <router-link to="/Posts" class="post k-font" >
           Tous les posts
-        </a>
+        </router-link>
         <div>
             <font-awesome-icon icon="fa-solid fa-user-group" class="ico" />
         </div>
-        <a  className="compte k-font" >
+        <router-link to="/Compte" class="compte k-font" >
           Mon compte
-        </a>
+        </router-link>
+        <router-link to="/">Go to Home</router-link>
       </nav>
     </header>
 </template>
@@ -22,7 +23,7 @@
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 export default {
-    name: 'header',
+    name: 'Header',
     components: {
         FontAwesomeIcon   
   }

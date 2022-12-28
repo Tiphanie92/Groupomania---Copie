@@ -1,10 +1,11 @@
-<script setup>
-import Login from './components/Login.vue'
-import Header from "./components/header.vue"
-</script>
 
 <template>
-  <Header />
-  <Login />
+   <Header/>
+        <router-view></router-view>
 </template>
+
+
+<script setup>
+import Header from './components/header.vue';
+</script>
 
