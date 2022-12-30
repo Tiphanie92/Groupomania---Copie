@@ -1,20 +1,17 @@
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  EmailAuthCredential,
-} from "firebase/auth";
-import "firebase/compat/firestore";
 import { initializeApp } from "firebase/app";
-import { useCurrentUser } from "vuefire";
+import { getFirestore } from "firebase/firestore";
 
-// initialize firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyByJDcR0urksz_rY4qaWOiyBH1pjtG4PJI",
+  authDomain: "groupomania-14abf.firebaseapp.com",
+  projectId: "groupomania-14abf",
+  storageBucket: "groupomania-14abf.appspot.com",
+  messagingSenderId: "341042381483",
+  appId: "1:341042381483:web:db0e1df11ce5a4f9c06dee",
+};
+
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-createUserWithEmailAndPassword(auth, EmailAuthCredential)
-  .then((userCredential) => {
-    const user = userCredential.user;
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
+
+const projectFirestore = getFirestore(app);
+
+export { projectFirestore };

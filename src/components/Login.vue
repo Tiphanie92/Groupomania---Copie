@@ -18,13 +18,13 @@
           </div>
         </div>
       </div>
-      <form id="signUp" class="sign-up" action="#">
+      <form @submit.prevent="handleSubmit" id="signUp" class="sign-up" action="#">
         <h2>Créer votre compte</h2>
         <div>Utiliser votre adresse email pour vous enregistrer</div>
-        <input id="name"  type="text" placeholder="Nom" />
-        <input id="email" type="email" placeholder="Email" />
-        <input id="password" type="password" placeholder="Mot de passe" />
-        <button ><RouterLink to="/Profil">S'enregistrer</RouterLink></button>
+        <input id="name" v-model="names" type="text" placeholder="Nom" />
+        <input id="email" v-model="email" type="email" placeholder="Email" />
+        <input id="password" v-model="password" type="password" placeholder="Mot de passe" />
+        <button type="submit" @click="register" value="login"><RouterLink to="/Profil">S'enregistrer</RouterLink></button>
       </form>
       <form class="sign-in" action="#">
         <h2>Connexion</h2>
@@ -39,29 +39,16 @@
   </div>
 </template>
 
-<script setup >
-import {ref} from "vue";
-import firebase from "firebase/compat/app";
-import { useRouter } from "vue-router";
-const email = ref ("")
-const password =ref("")
-const name = ref ("")
-const router = useRouter()
-const submit = () => {
-	firebase
-	.auth()
-	.createUserWithEmailAndPassword(email.value, password.value, name.value)
-	.then((data)=>{
-		console.log('Vous êtes bien enregistrer');
-		router.push("/Profil")
-	})
-	.catch(error => {
-		console.log(error.code)
-		alert(error.message);
-	})
+<script>
+export default { 
+  data: () => {
+    return {
+      signUp: false,
+    }
+  },
 }
-
 </script>
+
 
 <style scoped>
 #app {
