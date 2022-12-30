@@ -13,7 +13,6 @@
         <router-link to="/Compte" class="compte k-font" >
           Mon compte
         </router-link>
-        <router-link to="/">Go to Home</router-link>
       </nav>
     </header>
 </template>

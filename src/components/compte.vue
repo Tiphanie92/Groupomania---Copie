@@ -9,7 +9,7 @@
       <div class="profile_nav">
         <ul>
           <li @click="view = 'profile-about'; active = 'about'" 
-              v-bind:class="{active: active === 'about' }">ABOUT</li>
+              v-bind:class="{active: active === 'about' }">A-PROPOS</li>
           <li @click="view = 'profile-posts'; active='posts'"
               v-bind:class="{active: active === 'posts' }"
               >POSTS</li>
@@ -36,7 +36,7 @@ export default{
   },
   data(){
     return{
-  name : "Mark",
+  name : "Tiphanie",
     }
   },
   components :{
