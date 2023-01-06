@@ -8,14 +8,22 @@
     <font-awesome-icon icon="fa-solid fa-address-card" size="xl" class="ml-[10px] mt-[6px]" />
   </div>
 		<p id="description" class="mb-[20px]">Veuillez compléter les informations ci-dessous.</p>
-		<form id="survey-form" class="flex flex-col gap-[20px]">
+		<form id="survey-form" @submit.prevent="handleSubmit" class="flex flex-col gap-[20px]">
       <div class="bg-white border-[2px] border-[#4E5166] p-[20px] rounded-[10px]">
 			<div class="rowTab"> 
 				<div class="labels"><!-- demande de nom -->
 					<label id="name-label" for="name">Nom :</label>
 				</div>
 				<div class="rightTab">
-					<input autofocus type="text" name="name" id="name" class="input-field w-[100%] py-[8px] rounded-[15px] border-[1px] border-[#4E5166] shadow-md focus:shadow-[#DE5F5F] outline-none shadow-[1px] focus:border-[#DE5F5F] focus:border-[1px] px-[10px] font-normal bg-[#FFF0F0]" placeholder="Nom et prénom" required>
+					<input autofocus type="text" name="surname" id="surname" v-model="surname" class="input-field w-[100%] py-[8px] rounded-[15px] border-[1px] border-[#4E5166] shadow-md focus:shadow-[#DE5F5F] outline-none shadow-[1px] focus:border-[#DE5F5F] focus:border-[1px] px-[10px] font-normal bg-[#FFF0F0]" placeholder="Ton Nom" required>
+				</div>
+			</div>
+			<div class="rowTab"> 
+				<div class="labels"><!-- demande de nom -->
+					<label id="name-label" for="name">Prénom :</label>
+				</div>
+				<div class="rightTab">
+					<input autofocus type="text" name="name" id="name" v-model="name" class="input-field w-[100%] py-[8px] rounded-[15px] border-[1px] border-[#4E5166] shadow-md focus:shadow-[#DE5F5F] outline-none shadow-[1px] focus:border-[#DE5F5F] focus:border-[1px] px-[10px] font-normal bg-[#FFF0F0]" placeholder="Ton Prénom" required>
 				</div>
 			</div>
 			<div class="rowTab">
@@ -23,7 +31,7 @@
 					<label id="email-label" for="email">Email :</label>
 				</div>
 				<div class="rightTab">
-					<input type="email" name="email" id="email" class="input-field w-[100%] py-[8px] rounded-[15px] border-[1px] border-[#4E5166] shadow-md focus:shadow-[#DE5F5F] outline-none shadow-[1px] focus:border-[#DE5F5F] focus:border-[1px] px-[10px] font-normal bg-[#FFF0F0]" required placeholder="Ton Email">
+					<input type="email" name="email" id="email" v-model="email" class="input-field w-[100%] py-[8px] rounded-[15px] border-[1px] border-[#4E5166] shadow-md focus:shadow-[#DE5F5F] outline-none shadow-[1px] focus:border-[#DE5F5F] focus:border-[1px] px-[10px] font-normal bg-[#FFF0F0]" required placeholder="Ton Email">
 				</div>
 			</div>
       <div class="rowTab"> 
@@ -31,7 +39,7 @@
 					<label id="name-label" for="job">Profession :</label>
 				</div>
 				<div class="rightTab">
-					<input autofocus type="text" name="job" id="job" class="input-field w-[100%] py-[8px] rounded-[15px] border-[1px] border-[#4E5166] shadow-md focus:shadow-[#DE5F5F] outline-none shadow-[1px] focus:border-[#DE5F5F] focus:border-[1px] px-[10px] font-normal bg-[#FFF0F0] " placeholder="Ta profession" required>
+					<input autofocus type="text" name="job" id="job" v-model="job" class="input-field w-[100%] py-[8px] rounded-[15px] border-[1px] border-[#4E5166] shadow-md focus:shadow-[#DE5F5F] outline-none shadow-[1px] focus:border-[#DE5F5F] focus:border-[1px] px-[10px] font-normal bg-[#FFF0F0] " placeholder="Ta profession" required>
 				</div>
 			</div>
 			<div class="rowTab">
@@ -39,18 +47,18 @@
 					<label id="number-label" for="age">Age :</label>
 				</div>
 				<div class="rightTab">
-					<input type="number" name="age" id="number" min="18" max="80" class="input-field w-[100%] py-[8px] rounded-[15px] border-[1px] border-[#4E5166] shadow-md focus:shadow-[#DE5F5F] outline-none shadow-[1px] focus:border-[#DE5F5F] focus:border-[1px] px-[10px] font-normal bg-[#FFF0F0]"  required placeholder="Ton âge">
+					<input type="number" name="age" id="number" v-model="age" min="18" max="80" class="input-field w-[100%] py-[8px] rounded-[15px] border-[1px] border-[#4E5166] shadow-md focus:shadow-[#DE5F5F] outline-none shadow-[1px] focus:border-[#DE5F5F] focus:border-[1px] px-[10px] font-normal bg-[#FFF0F0]"  required placeholder="Ton âge">
 				</div>
 			</div>
 			<div class="rowTab">
 					<label for="comments">Description :</label>
 				<div class="rigtTab">
-					<textarea id="comments" class="input-field w-[100%] py-[8px] rounded-[15px] border-[1px] border-[#4E5166] shadow-md focus:shadow-[#DE5F5F] outline-none shadow-[1px] focus:border-[#DE5F5F] focus:border-[1px] max-h-[200px] px-[10px] font-normal bg-[#FFF0F0]" style="height:50px; resize:vertical;" placeholder="Ecrivez quelques mots sur vous-même..."></textarea>
+					<textarea id="comments" v-model="comments" class="input-field w-[100%] py-[8px] rounded-[15px] border-[1px] border-[#4E5166] shadow-md focus:shadow-[#DE5F5F] outline-none shadow-[1px] focus:border-[#DE5F5F] focus:border-[1px] max-h-[200px] px-[10px] font-normal bg-[#FFF0F0]" style="height:50px; resize:vertical;" placeholder="Ecrivez quelques mots sur vous-même..."></textarea>
 				</div>
 			</div>
     </div>
       <div>
-			<button id="submit" type="submit" class="bg-gradient-to-b from-[#FFD7D7] to-[#FF8787] py-[10px] px-[40px] rounded-[20px] border-[2px] border-white text-white tracking-[1px] uppercase cursor-pointer transition transform duration-[0.1s] ease-in active:transform active:scale-[0.9]"><RouterLink to="/Compte">Envoi !</RouterLink></button>
+			<button id="submit"  type="submit" class="bg-gradient-to-b from-[#FFD7D7] to-[#FF8787] py-[10px] px-[40px] rounded-[20px] border-[2px] border-white text-white tracking-[1px] uppercase cursor-pointer transition transform duration-[0.1s] ease-in active:transform active:scale-[0.9]">Envoi !</button>
       </div>
 		</form>
 	</div>
@@ -60,12 +68,37 @@
 
 <script>
   import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import {db} from "../firebase.js";
+import { collection, getDocs,addDoc} from 'firebase/firestore';
 
 export default {
     name: 'profil',
     components: {
         FontAwesomeIcon   
-  }
+  },
+
+  methods: {
+	handleSubmit(){
+		let userDetails = {
+			Noms : this.surname,
+			Prénoms : this.name,
+			Email : this.email,
+			Age : this.age,
+			Profession : this.job,
+			Description : this.comments
+		}
+		let users = collection(db,"/users")
+		addDoc(users, userDetails)
+		const user =  getDocs(users);
+  //const cityList = citySnapshot.docs.map(doc => doc.data());
+		console.log(user)
+		if(this.surname && this.name && this.email && this.age && this.job && this.comments){ 
+		this.$router.push({ path: '/Compte' });
+		}else {
+			this.$router.push({path : "/Profil"})
+		}
+	}
+  },		
 }
 </script>
 

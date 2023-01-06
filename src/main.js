@@ -8,9 +8,13 @@ import "./firebase";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
-import { faUserGroup, faAddressCard } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUserGroup,
+  faAddressCard,
+  faPowerOff,
+} from "@fortawesome/free-solid-svg-icons";
 
-library.add(faUserGroup, faEnvelope, faAddressCard);
+library.add(faUserGroup, faEnvelope, faAddressCard, faPowerOff);
 
 import router from "./router";
 

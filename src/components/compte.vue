@@ -9,18 +9,18 @@
       <div class="profile_nav">
         <ul>
           <li @click="view = 'profile-about'; active = 'about'" 
-              v-bind:class="{active: active === 'about' }">A-PROPOS</li>
+              v-bind:class="{active: active === 'about' }"><router-link to="/Compte/About">A-PROPOS</router-link></li>
           <li @click="view = 'profile-posts'; active='posts'"
               v-bind:class="{active: active === 'posts' }"
-              >POSTS</li>
+              ><router-link to="/Compte/Comments">POSTS</router-link></li>
           <li @click="view = 'profile-contact'; active='contact'"
-              v-bind:class="{active: active === 'contact' }">CONTACT</li>
+              v-bind:class="{active: active === 'contact' }"><router-link to="/Compte/Contact">CONTACT</router-link></li>
         </ul>
       </div> 
     </div>
     <div class="content"> 
       <transition name="slide-fade" mode="out-in"> 
-           <component v-bind:is="view"></component>
+           <router-view></router-view>
       </transition>
     </div>
   </div>
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import profilAbout from "../components/profilAbout.vue"
+
 export default{ 
   props: {
     view:'profile-about', 
@@ -37,10 +37,11 @@ export default{
   data(){
     return{
   name : "Tiphanie",
+
     }
   },
   components :{
-profilAbout
+
   }
 }
 
