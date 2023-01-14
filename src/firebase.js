@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { ref, computed, onMounted, onUnmounted } from "vue";
+import { getStorage } from "firebase/storage";
 const firebaseConfig = {
   apiKey: "AIzaSyByJDcR0urksz_rY4qaWOiyBH1pjtG4PJI",
   authDomain: "groupomania-14abf.firebaseapp.com",
@@ -38,5 +39,5 @@ export const useAuthState = () => {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
-export { db };
+const storage = getStorage(app);
+export { db, storage };

@@ -69,7 +69,8 @@
 <script>
   import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {db} from "../firebase.js";
-import { collection, getDocs,addDoc} from 'firebase/firestore';
+import {doc,setDoc} from 'firebase/firestore';
+import {getAuth} from "firebase/auth"
 
 export default {
     name: 'profil',
@@ -79,19 +80,25 @@ export default {
 
   methods: {
 	handleSubmit(){
+		const auth = getAuth();
+		const use = auth.currentUser;
+		const uid = use.uid
 		let userDetails = {
 			Noms : this.surname,
 			Prénoms : this.name,
 			Email : this.email,
 			Age : this.age,
 			Profession : this.job,
-			Description : this.comments
+			Description : this.comments,
+			uid : uid
 		}
-		let users = collection(db,"/users")
-		addDoc(users, userDetails)
-		const user =  getDocs(users);
+	
+		//let users = collection(db,"/users")
+		//addDoc(users, userDetails)
+		setDoc(doc(db, "users", uid), userDetails);
+		//const user =  getDocs(users);
   //const cityList = citySnapshot.docs.map(doc => doc.data());
-		console.log(user)
+		//console.log(user)
 		if(this.surname && this.name && this.email && this.age && this.job && this.comments){ 
 		this.$router.push({ path: '/Compte' });
 		}else {
