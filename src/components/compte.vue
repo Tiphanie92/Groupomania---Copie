@@ -9,7 +9,7 @@
 						<font-awesome-icon icon="fa-solid fa-file-pen" size="lg"
 							class="absolute cursor-pointer text-[#ffd7d7]" />
 					</label>
-					<img class="w-[100%]" :src="image" />
+					<img class="w-[100%]" :src="image" alt="" />
 				</div>
 				<div class="flex justify-center max-w-[70%] mt-[1em]">
 					<h2 class="mr-[10px] font-bold text-[2em]">{{ Prénoms }}</h2>
@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import { getDoc, doc, setDoc, addDoc } from "firebase/firestore";
+import { getDoc, doc, setDoc } from "firebase/firestore";
 import { db } from "../firebase"
 import { getAuth } from "firebase/auth"
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
@@ -248,7 +248,6 @@ img {
 	color: #e8beb7;
 }
 
-.content {}
 
 .content h3 {
 	margin-top: 0;
@@ -286,7 +285,6 @@ img {
 .posts h4 {
 	display: inline-block;
 	margin-right: 1em;
-	float: left;
 }
 
 .about h4.active {

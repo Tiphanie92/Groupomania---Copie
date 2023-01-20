@@ -44,8 +44,8 @@
 </template>
 
 <script>
-import { getDoc, doc, setDoc, addDoc, updateDoc, collection, getDocs } from "firebase/firestore";
-import { db, storage } from "../firebase"
+import { getDoc, doc, setDoc, collection } from "firebase/firestore";
+import { db } from "../firebase"
 import { getAuth } from "firebase/auth"
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -131,7 +131,6 @@ export default {
 		},
 
 		handleSubmit(event) {
-			const storage = getStorage();
 			//get request to get URL for uploaded file
 
 
