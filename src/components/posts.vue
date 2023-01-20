@@ -30,7 +30,7 @@
           </button>
           <div>
             <ul v-show="isOpenA" class="list-reset p-4 w-48 bg-grey-light">
-              <li>Example!</li>
+              <li>Example</li>
               <li>Example!</li>
               <li>Example!</li>
               <li>Example!</li>
