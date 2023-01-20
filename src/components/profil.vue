@@ -1,7 +1,6 @@
 <template>
 	<div class=" w-[100%] h-[1024px] flex justify-center items-center">
-		<img src="../assets/1609.m00.i125.n002.P.c25.345947435 Vector wireframe connecting earth sphere. Globe connection concept.jpg"
-			alt="" />
+		<img src="../assets/Social.jpg" alt="" />
 		<div
 			class="bg-gradient-to-b from-[#FFD7D7] to-[#FF8787] w-[50%] text-center flex items-center justify-center rounded-[20px] absolute shadow-[#E8BEB7] shadow-xl">
 			<div id="form-outer" class="font py-[50px] w-[50%]">
