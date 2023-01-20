@@ -24,26 +24,16 @@
         <form id="signUp" @submit.prevent="register" class="sign-up" action="#">
           <h2>Créer votre compte</h2>
           <div>Utiliser votre adresse email pour vous enregistrer</div>
-          <input id="email" v-model="email" type="email" placeholder="Email" />
-          <input
-            id="password"
-            v-model="password"
-            type="password"
-            placeholder="Mot de passe"
-          />
-		  <p v-show="errMsgRegister">{{ errMsgRegister }}</p>
+          <input id="emailCreate" v-model="emailCreate" type="email" placeholder="Email" />
+          <input id="passwordCreate" v-model="passwordCreate" type="password" placeholder="Mot de passe" />
+          <p v-show="errMsgRegister">{{ errMsgRegister }}</p>
           <button type="submit" value="login">S'enregistrer</button>
         </form>
         <form class="sign-in" @submit.prevent="login" action="#">
           <h2>Connexion</h2>
           <div>Utiliser votre compte</div>
           <input id="email" v-model="email" type="email" placeholder="Email" />
-          <input
-            id="password"
-            v-model="password"
-            type="password"
-            placeholder="Mot de passe"
-          />
+          <input id="password" v-model="password" type="password" placeholder="Mot de passe" />
           <p v-show="errMsg">{{ errMsg }}</p>
           <a href="#">Vous avez oublié votre mot de passe ?</a>
           <button>Se connecter</button>
@@ -74,24 +64,28 @@ export default {
     return {
       signUp: false,
       errMsg: errMsg,
-	  errMsgRegister: errMsgRegister,
+      errMsgRegister: errMsgRegister,
+      email: "",
+      password: "",
+      emailCreate: "",
+      passwordCreate: "",
     };
   },
   methods: {
     register() {
       createUserWithEmailAndPassword(
         getAuth(),
-        this.email,
-        this.password
+        this.emailCreate,
+        this.passwordCreate
       )
         .then((data) => {
           console.log("enregistrement reussie");
           this.$router.push({ path: "/Profil" });
         })
         .catch((error) => {
-			switch (error.code) {
+          switch (error.code) {
             case "auth/invalid-email":
-              errMsgRegister.value = "Emai invalide";
+              errMsgRegister.value = "Email invalide";
               break;
             case "auth/user-not-found":
               errMsgRegister.value = "Aucun compte ne correspond à cette adresse mail";
@@ -99,9 +93,9 @@ export default {
             case "auth/wrong-password":
               errMsgRegister.value = "Mot de passe incorrect";
               break;
-			  case "auth/weak-password":
-				errMsgRegister.value = "Le mot de passe doit contenir au moins 6 caractéres"
-				break;
+            case "auth/weak-password":
+              errMsgRegister.value = "Le mot de passe doit contenir au moins 6 caractéres"
+              break;
             default:
               errMsgRegister.value = "L'e-mail ou le mot de passe est incorrect";
               break;
@@ -157,6 +151,7 @@ export default {
   box-shadow: 0 15px 30px #e8beb7, 0 10px 10px #fff0f0;
   background: linear-gradient(to bottom, whitesmoke, #e8beb7);
 }
+
 .container .overlay-container {
   position: absolute;
   top: 0;
@@ -167,6 +162,7 @@ export default {
   transition: transform 0.5s ease-in-out;
   z-index: 100;
 }
+
 .container .overlay {
   position: relative;
   left: -100%;
@@ -177,6 +173,7 @@ export default {
   transform: translateX(0);
   transition: transform 0.5s ease-in-out;
 }
+
 .container .overlay-left {
   position: absolute;
   top: 0;
@@ -191,6 +188,7 @@ export default {
   transition: transform 0.5s ease-in-out;
   padding: 10px;
 }
+
 .container .overlay-right {
   position: absolute;
   top: 0;
@@ -206,11 +204,13 @@ export default {
   right: 0;
   padding: 10px;
 }
+
 h2 {
   margin: 0;
   font-family: "Lato", sans-serif;
   font-size: xx-large;
 }
+
 p {
   margin: 20px 0 30px;
   font-family: "Lato", sans-serif;
@@ -231,18 +231,22 @@ button {
   transition: transform 0.1s ease-in;
   font-family: "Lato", sans-serif;
 }
+
 button:active {
   transform: scale(0.9);
 }
+
 button:focus {
   outline: none;
 }
+
 button.invert {
   background-color: transparent;
   border-color: black;
   color: black;
   background: linear-gradient(to bottom right, transparent, transparent);
 }
+
 form {
   position: absolute;
   top: 0;
@@ -257,6 +261,7 @@ form {
   background: linear-gradient(to bottom, whitesmoke, #ffd7d7);
   transition: all 0.5s ease-in-out;
 }
+
 form div {
   font-size: 1rem;
   font-family: "Lato", sans-serif;
@@ -281,38 +286,47 @@ form input {
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4), 0 -1px 1px #fff, 0 1px 0 #fff;
   overflow: hidden;
 }
+
 form input:focus {
   outline: none;
   background-color: #fff;
   box-shadow: inset 0 1px 2px #de5f5f, 0 1px 1px #de5f5f, 0 1px 0 #de5f5f;
 }
+
 .sign-in {
   left: 0;
   z-index: 2;
 }
+
 .sign-up {
   left: 0;
   z-index: 1;
   opacity: 0;
 }
+
 .sign-up-active .sign-in {
   transform: translateX(100%);
 }
+
 .sign-up-active .sign-up {
   transform: translateX(100%);
   opacity: 1;
   z-index: 5;
   animation: show 0.5s;
 }
+
 .sign-up-active .overlay-container {
   transform: translateX(-100%);
 }
+
 .sign-up-active .overlay {
   transform: translateX(50%);
 }
+
 .sign-up-active .overlay-left {
   transform: translateX(0);
 }
+
 .sign-up-active .overlay-right {
   transform: translateX(20%);
 }

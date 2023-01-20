@@ -34,7 +34,7 @@
 					<div class="about">
 						<h4 @click="view = 'profile-about'; active = 'about'"
 							v-bind:class="{ active: active === 'about' }"
-							class="text-center text-[1.7em] text-[#4E5166] font-bold bg-[whitesmoke]  flex justify-center rounded-t-[20px] pr-[20px] pl-[20px] border-b-[whitesmoke] border-[2px] border-[white] ">
+							class="text-center text-[1.7em] text-[#4E5166] font-bold bg-[#ffd7d7] bg-opacity-20 flex justify-center rounded-t-[20px] pr-[20px] pl-[20px] border-b-[whitesmoke] border-[2px] border-[white] ">
 							<router-link to="/Compte/About">
 								A-Propos</router-link>
 						</h4>
@@ -42,7 +42,7 @@
 					<div class="post">
 						<h4 @click="view = 'profile-posts'; active = 'posts'"
 							v-bind:class="{ active: active === 'posts' }"
-							class="text-center text-[1.7em] text-[#4E5166] font-bold bg-[whitesmoke]   flex justify-center rounded-t-[20px] pr-[20px] pl-[20px] focus:border-[black] focus:border-[2px] border-b-[whitesmoke] border-[2px] border-[white]">
+							class="text-center text-[1.7em] text-[#4E5166] font-bold bg-[#ffd7d7] bg-opacity-20   flex justify-center rounded-t-[20px] pr-[20px] pl-[20px] focus:border-[black] focus:border-[2px] border-b-[whitesmoke] border-[2px] border-[white]">
 							<router-link to="/Compte/Comments">
 								Posts</router-link>
 						</h4>
@@ -50,16 +50,16 @@
 					<div class="contact">
 						<h4 @click="view = 'profile-contact'; active = 'contact'"
 							v-bind:class="{ active: active === 'contact' }"
-							class="text-center text-[1.7em] text-[#4E5166] font-bold bg-[whitesmoke]   flex justify-center rounded-t-[20px] pl-[20px] pr-[20px] border-b-[whitesmoke] border-[2px] border-[white]">
+							class="text-center text-[1.7em] text-[#4E5166] font-bold bg-[#ffd7d7] bg-opacity-20   flex justify-center rounded-t-[20px] pl-[20px] pr-[20px] border-b-[whitesmoke] border-[2px] border-[white]">
 							<router-link to="/Compte/Contact">
 								Contact</router-link>
 						</h4>
 
 					</div>
 				</div>
-				<transition name="slide-fade" mode="out-in">
-					<router-view></router-view>
-				</transition>
+
+				<router-view></router-view>
+
 			</div>
 		</div>
 	</div>
@@ -83,6 +83,7 @@ export default {
 	data() {
 		return {
 			Noms: "",
+			Prénoms: "",
 			image: "",
 		}
 	},
@@ -289,23 +290,14 @@ img {
 }
 
 .about h4.active {
-	border-top: #DEBABA solid;
-	border-left: #DEBABA solid;
-	border-right: #DEBABA solid;
-	border: 2px 2px 0 0
+	color: #e8beb7;
 }
 
 .post h4.active {
-	border-top: #DECDC5 solid;
-	border-left: #DECDC5 solid;
-	border-right: #DECDC5 solid;
-	border: 2px 2px 0 0
+	color: #e8beb7;
 }
 
 .contact h4.active {
-	border-top: #AB9090 solid;
-	border-left: #AB9090 solid;
-	border-right: #AB9090 solid;
-	border: 2px 2px 0 0
+	color: #e8beb7;
 }
 </style>
