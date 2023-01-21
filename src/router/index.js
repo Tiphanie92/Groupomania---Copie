@@ -3,7 +3,7 @@ import Login from "../components/Login.vue";
 import profil from "../components/profil.vue";
 import compte from "../components/compte.vue";
 import posts from "../components/posts.vue";
-import about from "../view/about.vue";
+import about from "../view/abouts.vue";
 import comments from "../view/comments.vue";
 import contact from "../view/contact.vue";
 
