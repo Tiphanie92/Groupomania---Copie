@@ -2,16 +2,16 @@
 	<div class="container">
 		<div id="profile" class="profile">
 			<div class="user-info">
-				<div class="user-info_avatar flex flex-col-reverse items-end">
+				<div class="user-info_avatar flex flex-col-reverse items-end w-[200px] h-[200px] ml-[80px]">
 					<label class="flex items-end mr-[90px]">
 						<input type="file" @change="uploadImage" accept="image/" id="files" name="files[]"
 							class="hidden">
 						<font-awesome-icon icon="fa-solid fa-file-pen" size="lg"
 							class="absolute cursor-pointer text-[#ffd7d7]" />
 					</label>
-					<img class="w-[100%]" :src="image" alt="" />
+					<img class="" :src="image" alt="" />
 				</div>
-				<div class="flex justify-center max-w-[70%] mt-[1em]">
+				<div class="flex justify-center max-w-[70%] mt-[1em] ml-[45px]">
 					<h2 class="mr-[10px] font-bold text-[2em]">{{ Prénoms }}</h2>
 					<h2 class="font-bold text-[2em]">{{ Noms }}</h2>
 				</div>
@@ -172,7 +172,9 @@ h3 {
 }
 
 img {
-	max-width: 100%
+	width: 200px;
+	height: 200px;
+	object-fit: cover;
 }
 
 .container {
@@ -185,7 +187,7 @@ img {
 	background-color: #fff;
 	box-shadow: 0 20px 75px #4E5166;
 	position: absolute;
-	top: 50%;
+	top: 53%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	padding: 2em 3em 2em 3em;

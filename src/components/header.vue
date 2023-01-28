@@ -1,48 +1,48 @@
 
 <template>
-    <header class="header">
-        <img src="../assets/iconWhite.png" alt="logo" class="logo"/>
-        <nav className="nav">
-            <font-awesome-icon icon="fa-regular fa-envelope" beatFade class="ico" />
-        <router-link to="/Posts" class="post h-font" >
-          Tous les posts
-        </router-link>
-        <span v-show="isLoggedIn">
+  <header class="header">
+    <img src="../assets/iconWhite.png" alt="logo" class="logo" />
+    <nav className="nav">
+      <font-awesome-icon icon="fa-regular fa-envelope" beatFade class="ico" />
+      <router-link to="/Posts" class="post h-font">
+        Tous les posts
+      </router-link>
+      <span v-show="isLoggedIn">
         <div class="contents">
-            <font-awesome-icon icon="fa-solid fa-user-group" class="ico" />
+          <font-awesome-icon icon="fa-solid fa-user-group" class="ico" />
         </div>
-        <router-link to="/Compte" class="compte h-font mr-[50px]" >
+        <router-link to="/Compte" class="compte h-font mr-[50px]">
           Mon compte
         </router-link>
         <font-awesome-icon class="ico" icon="fa-solid fa-power-off" />
         <button class="h-font" @click="handleSignout">Se deconnecter</button>
-        
+
       </span>
-      </nav>
-    </header>
+    </nav>
+  </header>
 </template>
 
 <script setup>
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { ref,onMounted } from "vue";
-import { getAuth,onAuthStateChanged,signOut } from "@firebase/auth";
+import { ref, onMounted } from "vue";
+import { getAuth, onAuthStateChanged, signOut } from "@firebase/auth";
 import router from "../router/index"
 const isLoggedIn = ref(false)
 let auth;
-onMounted(()=> {
+onMounted(() => {
   auth = getAuth();
-  onAuthStateChanged(auth, (user)=> {
+  onAuthStateChanged(auth, (user) => {
     if (user) {
       isLoggedIn.value = true;
-    }else {
+    } else {
       isLoggedIn.value = false;
     }
   });
 });
 
 const handleSignout = () => {
-  signOut(auth).then(()=> {
+  signOut(auth).then(() => {
     router.push({ path: '/' })
   })
 }
@@ -73,10 +73,7 @@ const handleSignout = () => {
   font-weight: bold;
 }
 
-.compte {
-  
-
-}
+.compte {}
 
 .h-font {
   text-decoration: none;
@@ -90,9 +87,9 @@ const handleSignout = () => {
   width: 20%;
   display: flex;
 }
+
 .ico {
   color: #DE5F5F;
   margin-right: 10px;
 }
-
 </style>

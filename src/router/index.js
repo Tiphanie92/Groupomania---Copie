@@ -6,6 +6,7 @@ import posts from "../components/posts.vue";
 import about from "../view/abouts.vue";
 import comments from "../view/comments.vue";
 import contact from "../view/contact.vue";
+import detail from "../view/detail.vue";
 
 import { getUserState } from "../firebase";
 
@@ -43,6 +44,11 @@ const router = createRouter({
     {
       path: "/Posts",
       component: posts,
+    },
+    {
+      path: "/Posts/:id",
+      name: "details",
+      component: detail,
     },
   ],
 });

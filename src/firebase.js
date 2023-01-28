@@ -4,12 +4,12 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { ref, computed, onMounted, onUnmounted } from "vue";
 import { getStorage } from "firebase/storage";
 const firebaseConfig = {
-  apiKey: "AIzaSyByJDcR0urksz_rY4qaWOiyBH1pjtG4PJI",
-  authDomain: "groupomania-14abf.firebaseapp.com",
-  projectId: "groupomania-14abf",
-  storageBucket: "groupomania-14abf.appspot.com",
-  messagingSenderId: "341042381483",
-  appId: "1:341042381483:web:db0e1df11ce5a4f9c06dee",
+  apiKey: "AIzaSyDjLLJ_D4MCTAXAl9S75-qMSPaUxTS_Kp4",
+  authDomain: "fir-b5eb0.firebaseapp.com",
+  projectId: "fir-b5eb0",
+  storageBucket: "fir-b5eb0.appspot.com",
+  messagingSenderId: "620967770644",
+  appId: "1:620967770644:web:3caae645a68ef83e6c8501",
 };
 
 export const getUserState = () =>

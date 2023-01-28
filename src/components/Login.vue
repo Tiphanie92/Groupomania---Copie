@@ -37,7 +37,11 @@
           <p v-show="errMsg">{{ errMsg }}</p>
           <a href="#">Vous avez oublié votre mot de passe ?</a>
           <button>Se connecter</button>
+          <button @click="googleSignIn">
+            Sign In with Google
+          </button>
         </form>
+
       </div>
     </article>
   </div>
@@ -47,10 +51,12 @@
 import {
   createUserWithEmailAndPassword,
   getAuth,
-  signInWithEmailAndPassword,
+  signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider
 } from "firebase/auth";
 import { ref } from "vue";
 import useVuelidate from "@vuelidate/core";
+import { db } from "../firebase";
+import router from "../router";
 
 
 const errMsg = ref("");
@@ -125,6 +131,17 @@ export default {
           }
         });
     },
+    googleSignIn() {
+      let provider = new GoogleAuthProvider();
+      signInWithPopup(getAuth(), provider)
+        .then((result) => {
+          console.log(result.user);
+          router.push("/Compte")
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    }
   },
 
 };
